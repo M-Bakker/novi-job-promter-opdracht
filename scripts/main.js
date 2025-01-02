@@ -70,5 +70,63 @@ const departments = {
         ],
     }
 }
+console.log(departments)
 
-console.log(departments);
+// Opdracht 1 //
+// console.log('De afdeling sales heeft ' + departments.sales.numberOfEmployees + ' medewerkers');
+// console.log('Marketing is een leuke afdeling om te werken. ' + departments.marketing.description)
+// console.log('De afdeling Customer Service heeft ' + departments["customer-service"].numberOfEmployees + ' medewerkers')
+// console.log('Sales is een uitdagende afdeling om te werken als Verkoopmanager. ' + departments.sales.jobs[1].description)
+
+/*opdracht 2,4*/
+const userInputDepartment = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]');
+switch (userInputDepartment) {
+    case 'marketing':
+        output = departments.marketing.description;
+        name = 'Marketing';
+        break;
+    case 'sales':
+        output = departments.sales.description;
+        name = 'Sales'
+        break;
+    case 'customer-service':
+        output = departments["customer-service"].description
+        name = 'Customer-service'
+        break;
+    default:
+        console.error('Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.')
+        document.getElementById('error-message').textContent = 'Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.';
+}
+// Ik heb 'name' toegevoegd omdat de zin anders zonder hoofdletter begint.
+
+console.log(name + ' is een leuke afdeling om te werken. ' + 'Er werken op dit moment ' + departments[userInputDepartment].numberOfEmployees + ' medewerkers.');
+
+/*opdracht 3,4,5*/
+userInput = prompt('Je koos marketing. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in.\n' +
+    `0: ${departments[userInputDepartment].jobs[0].title}, \n` +
+    `1: ${departments[userInputDepartment].jobs[1].title}, \n` +
+    `2: ${departments[userInputDepartment].jobs[2].title}, \n` +
+    `3: ${departments[userInputDepartment].jobs[3].title}`)
+
+switch (userInput) {
+    case '0':
+        output = 'Je koos ' + departments[userInputDepartment].jobs[0].title + ' Een uitdagende rol! ' + departments[userInputDepartment].jobs[0].description;
+        break;
+    case '1':
+        output = 'Je koos ' + departments[userInputDepartment].jobs[1].title + ' Een uitdagende rol! ' + departments[userInputDepartment].jobs[1].description;
+        break;
+    case '2':
+        output = 'Je koos ' + departments[userInputDepartment].jobs[2].title + ' Een uitdagende rol! ' + departments[userInputDepartment].jobs[2].description;
+        break;
+    case '3':
+        output = 'Je koos ' + departments[userInputDepartment].jobs[3].title + ' Een uitdagende rol! ' + departments[userInputDepartment].jobs[3].description;
+        break;
+    default:
+        console.error('Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.')
+        document.getElementById('error-message').textContent = 'Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.';
+}
+
+console.log(output)
+document.getElementById('role-title').textContent = name;
+document.getElementById('department-description').textContent = departments[userInputDepartment].description;
+document.getElementById('role-description').textContent = departments[userInputDepartment].jobs[userInput].description;
